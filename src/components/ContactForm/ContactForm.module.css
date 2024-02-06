@@ -1,0 +1,40 @@
+.form {
+    border: 2px solid #3903fc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: #a9c911;
+}
+
+.formField {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.formLabel {
+    font-size: 20px;
+}
+
+.formInput {
+    width: 60%;
+}
+
+.formButton {
+    display: block;
+    margin: 0 auto;
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid #3903fc;
+    border-radius: 5px;
+    font-size: 18px;
+    background-color: transparent;
+    
+}
+
+.formButton:hover {
+    background-color: #3903fc;
+    border: 1px solid #a9c911;
+    color: #ffffff;
+}

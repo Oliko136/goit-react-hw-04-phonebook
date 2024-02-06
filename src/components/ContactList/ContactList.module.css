@@ -1,0 +1,25 @@
+.contactList {
+    padding: 0;
+    list-style: none;
+}
+
+.contactItem {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.deleteButton {
+    margin-left: 20px;
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid #3903fc;
+    border-radius: 5px;
+    font-size: 15px;
+    background-color: transparent;
+}
+
+.deleteButton:hover {
+    background-color: #3903fc;
+    border: 1px solid #a9c911;
+    color: #ffffff;
+}
