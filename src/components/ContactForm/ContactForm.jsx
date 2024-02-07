@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { useMemo, useState } from "react";
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 import styles from './ContactForm.module.css';
@@ -8,35 +8,34 @@ const INITIAL_STATE = {
     number: ''
 }
 
-export class ContactForm extends Component {
-    state = {...INITIAL_STATE}
+export const ContactForm = ({ onSubmit }) => {
+    const [state, setState] = useState({...INITIAL_STATE});
     
-    contactNameId = nanoid();
-    contactNumberId = nanoid();
-
-    handleChange = ({target}) => {
+    const handleChange = ({target}) => {
         const { name, value } = target;
 
-        this.setState({
+        setState({
+            ...state,
             [name]: value
         });
     }
 
-    handleSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        this.props.onSubmit({ ...this.state });
-        this.reset();
+        onSubmit({ ...state });
+        reset();
     }
 
-    reset() {
-        this.setState({ ...INITIAL_STATE });
+    const reset = () => {
+        setState({ ...INITIAL_STATE });
     }
+    
+    const contactNameId = useMemo(() => nanoid(), []);
+    const contactNumberId = useMemo(() => nanoid(), []);
 
-    render() {
-        const { contactNameId, contactNumberId, handleChange, handleSubmit } = this;
-        const { name, number } = this.state;
+    const { name, number } = state;
 
-        return (
+    return (
             <form onSubmit={handleSubmit} className={styles.form}>
                 <div className={styles.formField}>
                     <label htmlFor={contactNameId} className={styles.formLabel}>Name</label>
@@ -51,7 +50,6 @@ export class ContactForm extends Component {
                 <button type="submit" className={styles.formButton}>Add contact</button>
             </form>
         )
-    }
 }
 
 ContactForm.propTypes = {
